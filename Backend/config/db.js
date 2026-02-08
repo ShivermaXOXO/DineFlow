@@ -1,4 +1,4 @@
-require('dotenv').config({ path: require('path').resolve(__dirname, '../.env') });
+require('dotenv').config();
 const { Sequelize } = require('sequelize');
 
 // Use individual parameters - this works reliably

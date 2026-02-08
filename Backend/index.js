@@ -10,6 +10,8 @@ const host = process.env.HOST || '0.0.0.0';
 
 //require('dotenv').config();
 const port = process.env.PORT || 3000;
+console.log("DB_HOST:", process.env.DB_HOST);
+console.log("DB_USER:", process.env.DB_USER);
 
 sequelize.sync()
     .then(() => {
