@@ -11,6 +11,10 @@ const host = process.env.HOST || '0.0.0.0';
 //require('dotenv').config();
 const port = process.env.PORT || 3000;
 
+app.get('/', (req, res) => {
+    res.send('DineFlow Backend Running');
+});
+
 // socket.io implementation
 const server = http.createServer(app);
 initSocket(server);
