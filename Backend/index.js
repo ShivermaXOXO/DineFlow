@@ -10,16 +10,6 @@ const host = process.env.HOST || '0.0.0.0';
 
 //require('dotenv').config();
 const port = process.env.PORT || 3000;
-console.log("DB_HOST:", process.env.DB_HOST);
-console.log("DB_USER:", process.env.DB_USER);
-
-sequelize.sync()
-    .then(() => {
-        console.log("Tables synced successfully");
-    })
-    .catch(err => {
-        console.error("Sync error", err);
-    });
 
 // socket.io implementation
 const server = http.createServer(app);
@@ -101,8 +91,8 @@ async function startServer() {
         await sequelize.authenticate();
         console.log('✅ Database connected successfully.');
 
-//        await sequelize.sync(); // you can use { alter: true } if needed
- //       console.log('🔄 Models synchronized.');
+        await sequelize.sync(); // optional, remove later in production
+        console.log('🔄 Tables synced');
 
         server.listen(port, host, () => {
             console.log(` Server running on port ${port}`);
