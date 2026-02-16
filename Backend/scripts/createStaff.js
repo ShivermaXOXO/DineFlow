@@ -12,7 +12,7 @@ const Staff = require('../models/Staff');
       password: hashedPassword
     },
     {
-      where: { email: 'praveen@test.com' } // 👈 purana email
+      where: { email: 'praveen@test.com' } 
     }
   );
 

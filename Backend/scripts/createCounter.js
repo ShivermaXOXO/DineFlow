@@ -3,8 +3,16 @@ const bcrypt = require('bcrypt');
 const Staff = require('../models/Staff');
 
 (async () => {
-  const hashed = await bcrypt.hash('counter123', 10);
+  try {
+    const hashed = await bcrypt.hash('counter123', 10);
+    const existing = await Staff.findOne({
+      where: { email: 'counter@test.com' }
+    });
 
+    if (existing) {
+      console.log('⚠️ Counter already exists');
+      process.exit();
+    }
   await Staff.create({
     name: 'Rohit Counter',
     email: 'counter@test.com',
@@ -15,4 +23,9 @@ const Staff = require('../models/Staff');
 
   console.log('Counter user created successfully');
   process.exit();
+
+  } catch (err) {
+    console.error('❌ Error creating counter:', err.message);
+    process.exit();
+  }
 })();
