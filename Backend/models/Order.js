@@ -7,72 +7,95 @@ const Order = sequelize.define('Order', {
     primaryKey: true,
     autoIncrement: true,
   },
+
   orderNumber: {
     type: DataTypes.STRING,
     unique: true,
     allowNull: false,
+    field: 'ordernumber'
   },
+
   customername: {
     type: DataTypes.STRING,
     allowNull: false,
   },
+
   phoneNumber: {
     type: DataTypes.STRING,
     allowNull: true,
+    field: 'phonenumber'
   },
+
   tableNumber: {
     type: DataTypes.STRING,
     allowNull: true,
+    field: 'tablenumber'
   },
+
   diningType: {
     type: DataTypes.STRING,
     allowNull: true,
-    validate: {
-      isIn: [['dine-in', 'takeaway']]
-    }
+    field: 'diningtype'
   },
+
   carDetails: {
     type: DataTypes.STRING,
     allowNull: true,
+    field: 'cardetails'
   },
+
   items: {
     type: DataTypes.JSON,
     allowNull: false,
     defaultValue: [],
   },
+
   totalAmount: {
     type: DataTypes.DECIMAL(10, 2),
     allowNull: false,
     defaultValue: 0,
+    field: 'totalamount'
   },
+
   status: {
-    type: DataTypes.ENUM('pending', 'in_progress', 'ready', 'completed', 'cancelled'),
+    type: DataTypes.STRING,
     defaultValue: 'pending',
   },
+
   hotelId: {
     type: DataTypes.INTEGER,
     allowNull: false,
+    field: 'hotelid'
   },
+
   staffId: {
     type: DataTypes.INTEGER,
-    allowNull: true, // Assigned when staff accepts the order
+    allowNull: true,
+    field: 'staffid'
   },
+
   acceptedat: {
     type: DataTypes.DATE,
-    allowNull: true,
+    field: 'acceptedat'
   },
+
   completedat: {
     type: DataTypes.DATE,
-    allowNull: true,
+    field: 'completedat'
   },
+
   notes: {
     type: DataTypes.TEXT,
-    allowNull: true,
   },
+
 }, {
-  timestamps: true,
   tableName: 'orders',
+
+  timestamps: true,
+  createdAt: 'createdat',
+  updatedAt: 'updatedat'
 });
+
 
 // Define associations
 Order.associate = (models) => {

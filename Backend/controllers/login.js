@@ -24,13 +24,15 @@ const login = async (req, res) => {
         }
 
         // Find user with the hotel ID
+        console.log("table check running");
         const user = await Staff.findOne({ 
             where: { 
                 email, 
                 role, 
-                hotelId: parseInt(hotelId) 
+                hotelId: Number(hotelId) 
             } 
         });
+        console.log(user);
 
         if (!user) return res.status(404).json({ message: 'User not found for this hotel' });
 

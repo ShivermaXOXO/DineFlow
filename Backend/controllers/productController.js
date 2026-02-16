@@ -29,9 +29,11 @@ const getHotelProducts = async (req, res) => {
         
         res.status(200).json(products);
     } catch (err) {
-        console.error("Error in getHotelProducts:", err);
-        res.status(500).json({ error: "Failed to fetch products" });
+        console.error("❌ getHotelProducts FULL ERROR:", err.message);
+        console.error(err);
+        res.status(500).json({ error: err.message });
     }
+
 };
 
 const deleteProduct = async (req, res) => {

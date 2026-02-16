@@ -180,7 +180,7 @@ const getOrdersByHotel = async (req, res) => {
         as: "staff", 
         attributes: ["id", "name", "email"] 
       }],
-      order: [['createdat', 'DESC']],
+      order: [['createdAt', 'DESC']],
       raw: true,
       nest: true
     });
@@ -830,7 +830,7 @@ const exportOrdersToExcel = async (req, res) => {
         as: "staff", 
         attributes: ["id", "name", "email"] 
       }],
-      order: [['createdat', 'DESC']],
+      order: [['createdAt', 'DESC']],
       raw: true,
       nest: true
     });

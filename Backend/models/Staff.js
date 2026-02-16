@@ -22,11 +22,16 @@ const Staff = sequelize.define('Staff', {
   hotelId: {
     type: DataTypes.INTEGER,
     allowNull: false,
+    field: 'hotelId',
     references: {
       model: 'hotels',   // ✅ lowercase
       key: 'id'
     }
   }
+}, {
+  tableName: 'Staffs',
+  freezeTableName: true,
+  timestamps: true,
 });
 
 Staff.associate = (models) => {
