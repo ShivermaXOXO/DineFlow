@@ -279,7 +279,7 @@ const TakeawayOrdersTab = ({
         </div>
         <button
           onClick={() => onSetTakeaway && onSetTakeaway()}
-          className="bg-yellow-600 text-white px-4 py-2 rounded-lg hover:bg-yellow-700 transition-colors flex items-center w-full sm:w-auto justify-center"
+          className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-yellow-700 transition-colors flex items-center w-full sm:w-auto justify-center"
         >
           <FontAwesomeIcon icon={faShoppingBag} className="mr-2" />
           Takeaway Order
@@ -3443,14 +3443,14 @@ const StaffDashboard = () => {
                 <h2 className="
                   text-lg font-semibold text-gray-900 
                   flex items-center 
-                  col-span-1
+                  col-span-1 pl-5
                 ">
                   <FontAwesomeIcon icon={faShoppingCart} className="mr-2 text-gray-600" />
                   KOT 
                 </h2>
-                <div className="bg-gray-100 px-3 py-1 rounded-md text-right col-span-1 flex justify-end">
+                <div className="px-5 py-1 rounded-md text-right col-span-1 flex justify-end">
                   {totalTableNumber ? (
-                    <p className="text-lg font-bold">Total Table: {totalTableNumber}</p>
+                    <p className="text-lg font-bold whitespace-nowrap">Total Table: {totalTableNumber}</p>
                   ) : (
                     <p className="text-sm text-gray-500">No table assigned</p>
                   )}
@@ -3467,13 +3467,12 @@ const StaffDashboard = () => {
                   )}
 
                   <div className="flex flex-col justify-center w-full sm:w-auto">
-                    <p className="text-[10px] text-blue-600 font-medium mb-0.5 hidden sm:block">Printer</p>
                     <button
                       onClick={handleConnectPrinter}
                       disabled={isConnectingToPrinter}
                       className={`px-3 py-2 rounded-lg border text-sm font-medium w-full sm:w-auto ${hasRealPrinterConnection()
-                        ? 'text-green-800 hover:text-green-900'
-                        : 'text-blue-800 hover:text-blue-900'
+                        ? 'text-green-800 hover:text-white-900'
+                        : 'bg-blue-800 text-white hover:bg-white'
                         } transition-colors disabled:opacity-50`}
                       title={
                         hasRealPrinterConnection()
@@ -3493,7 +3492,7 @@ const StaffDashboard = () => {
                   {/* Refresh Button */}
                   <button
                     onClick={handleRefresh}
-                    className="bg-blue-600 text-white px-3 py-2 rounded-lg w-full sm:w-auto"
+                    className="bg-purple-600 text-white px-3 py-2 rounded-lg w-full sm:w-auto"
                     title="Refresh orders"
                   >
                     <FontAwesomeIcon icon={faSync} className="mr-2" />
@@ -3531,8 +3530,8 @@ const StaffDashboard = () => {
                     <button
                       onClick={() => setActiveTab('takeaway')}
                       className={`py-4 px-1 border-b-2 font-medium text-sm ${activeTab === 'takeaway'
-                        ? 'border-blue-500 text-blue-600'
-                        : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                        ? 'border-purple-500 text-purple-600'
+                        : 'border-transparent text-gray-500 hover:text-purple-500 hover:border-gray-200'
                         }`}
                     >
                       <FontAwesomeIcon icon={faShoppingBag} className="mr-2" />
