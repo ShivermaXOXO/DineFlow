@@ -1,7 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark, faReceipt, faPercentage } from "@fortawesome/free-solid-svg-icons";
-
 const SettleBillModal = ({
   isOpen,
   onClose,
@@ -18,7 +17,6 @@ const SettleBillModal = ({
   if (!isOpen) return null;
 
   const taxAmount = addTax ? (total * taxPercentage) / 100 : 0;
-
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
       <div className="bg-white w-full max-w-md rounded-lg shadow-lg overflow-hidden">
@@ -93,7 +91,7 @@ const SettleBillModal = ({
           </button>
           <button
   className="flex-1 bg-green-600 text-white py-2 rounded"
-  onClick={() => handleConfirmPayment(orderId)}
+            onClick={() => handleConfirmPayment(orderId)}
 >
   Generate Bill
 </button>

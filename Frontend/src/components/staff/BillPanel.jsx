@@ -14,7 +14,6 @@ import {
   faUtensils
 } from '@fortawesome/free-solid-svg-icons';
 import BillItem from './BillItem';
-
 const BillPanel = ({
   billItems,
   total,
@@ -45,7 +44,6 @@ const BillPanel = ({
   setCarDetails = () => {}
 }) => {
   const itemCount = billItems.reduce((sum, item) => sum + item.quantity, 0);
-  
   // Calculate tax amount and final total
   const subtotal = total || 0;
   const taxAmount = addTax && taxPercentage ? (subtotal * parseFloat(taxPercentage) / 100) : 0;

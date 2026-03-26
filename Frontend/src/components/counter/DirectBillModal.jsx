@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark, faReceipt } from "@fortawesome/free-solid-svg-icons";
 import totalVisit from "../../utils/totalVisitsUtils";
 import { useAuth } from "../../context/authContext";
-
 const DirectBillModal = ({
   billItems = [],
   isOpen,
@@ -22,8 +21,7 @@ const DirectBillModal = ({
 mobileNumber
    
 }) => {
-  const {auth}= useAuth()
-
+  const { auth } = useAuth()
   
   const [visitCount,setVisitCount]= useState(0)
   if (!isOpen) return null;

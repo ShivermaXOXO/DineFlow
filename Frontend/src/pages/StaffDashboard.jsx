@@ -27,8 +27,6 @@ import autoTable from 'jspdf-autotable';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import printerService from '../services/printerService';
-import SettleBillModal from '../components/counter/SettleBillModal';
-import DirectBillModal from '../components/counter/DirectBillModal';
 import ProductList from '../components/staff/ProductList';
 import OrderForm from '../components/staff/OrderForm';
 import NewOrderDialog from '../components/staff/NewOrderDialog';
