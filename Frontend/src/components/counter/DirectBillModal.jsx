@@ -3,6 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark, faReceipt } from "@fortawesome/free-solid-svg-icons";
 import totalVisit from "../../utils/totalVisitsUtils";
 import { useAuth } from "../../context/authContext";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+
 const DirectBillModal = ({
   billItems = [],
   isOpen,
@@ -22,7 +25,7 @@ mobileNumber
    
 }) => {
   const { auth } = useAuth()
-  
+  const navigate = useNavigate();
   const [visitCount,setVisitCount]= useState(0)
   if (!isOpen) return null;
   const totalVisits= async()=>{
@@ -38,8 +41,31 @@ mobileNumber
    const gstAmount = taxPercentage ? (total * taxPercentage) / 100 : 0;
   const finalAmount = total + gstAmount -discountAmount;
   async function printBill() {
-    total=finalAmount
-    handleConfirmPayment(total)
+    try {
+      if (!paymentType) {
+        toast.warning("Please select a payment method");
+        return;
+      }
+      await handleConfirmPayment(finalAmount)
+
+      const billData = {
+        items: billItems,
+        total: total,
+        finalTotal: finalAmount,
+        customername: mobileNumber || "Walk-in Customer",
+        phoneNumber: mobileNumber,
+        paymentType: paymentType,
+        hotelId: auth.hotelId,
+      };
+
+      navigate("/generate-bill-preview", {
+        state: { billData }
+      });
+
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error("Failed to load preview");
+    }
   }
 
   return (

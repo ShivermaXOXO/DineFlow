@@ -19,7 +19,7 @@ import Footer from "./components/common/Footer";
 import CustomerLayout from "./components/QR-based/CustomerLayout";
 import CustomerDashboard from "./components/QR-based/CustomerDashboard";
 import AdminOrders from "./components/QR-based/admin";
-
+import GenerateBillPreview from "./components/counter/GenerateBillPreview";
 function App() {
   return (
     <Routes>
@@ -135,7 +135,7 @@ function App() {
           </>
         }
       />
-
+      <Route path="/generate-bill-preview" element={<GenerateBillPreview />} />
     </Routes>
   );
 }
