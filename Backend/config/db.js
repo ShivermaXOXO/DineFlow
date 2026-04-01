@@ -7,17 +7,19 @@ const databaseUrl =
   process.env.DATABASE_URL ||
   `postgresql://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`;
 
+const isCloud = databaseUrl.includes("supabase.co") || databaseUrl.includes("neon.tech");
+
 const sequelize = new Sequelize(databaseUrl, {
   dialect: 'postgres',
   logging: false,
-  dialectOptions: process.env.NODE_ENV === 'production'
+  dialectOptions: isCloud
     ? {
       ssl: {
         require: true,
-        rejectUnauthorized: false
+        rejectUnauthorized: false,
+      },
       }
-    }
-    : {}
+    : {},
 });
 
 sequelize.authenticate()
